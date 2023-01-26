@@ -1,4 +1,6 @@
+###
 # Unity folders and files
+###
 [Aa]ssets/AssetStoreTools*
 [Bb]uild/
 [Ll]ibrary/
@@ -6,53 +8,31 @@
 [Oo]bj/
 [Tt]emp/
 [Uu]nityGenerated/
-[Bb]uilds/
-[Ll]ogs/
-[Uu]ser[Ss]ettings/
-
-
 # file on crash reports
 sysinfo.txt
-
-
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
 
-
-# Unity3D generated file on crash reports
-sysinfo.txt
-
-
+###
 # VS/MD solution and project files
-ExportedObj/
-.consulo/
+###
+[Ee]xportedObj/
+*.booproj
 *.csproj
-*.unityproj
 *.sln
 *.suo
-*.tmp
+*.svd
+*.unityproj
 *.user
 *.userprefs
 *.pidb
-*.booproj
-*.svd
-*.pdb
-*.mdb
-*.opendb
-*.VC.db
 .DS_Store
 
-
-# Builds
-*.apk
-*.aab
-*.unitypackage
-*.app
-
-
+###
 # OS generated
+###
 .DS_Store
 .DS_Store?
 ._*
