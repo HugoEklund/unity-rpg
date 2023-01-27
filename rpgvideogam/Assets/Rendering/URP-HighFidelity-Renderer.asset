@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2784affd0afdf049a49705af192f15a, type: 3}
   m_Name: PixelRenderer
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     rendererPassEvent: 550
     screenHeight: 270
