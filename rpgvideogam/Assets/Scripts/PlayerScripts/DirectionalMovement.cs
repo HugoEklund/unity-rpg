@@ -1,11 +1,16 @@
 using System.Collections;
+using System.Collections.Specialized;
+using System.Security.Cryptography;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.UIElements;
+using System.Threading;
 
 public class DirectionalMovement : MonoBehaviour
 {
@@ -16,7 +21,6 @@ public class DirectionalMovement : MonoBehaviour
     private Vector3 targetPos;
     private Vector3 tempMovePos;
 
-
     public Vector3 tempMousePos { get; private set; }
 
     [SerializeField] private float withinRadius;
@@ -25,6 +29,9 @@ public class DirectionalMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     [SerializeField] private Camera cameraObject;
     [SerializeField] private Rigidbody playerRB;
+    [SerializeField] private Transform upperBodyTrans;
+    [SerializeField] private float coneWidth;
+    [SerializeField] private float coneLength;
 
     private Vector3 gizmoTarget;
 
@@ -79,11 +86,40 @@ public class DirectionalMovement : MonoBehaviour
 
     private Quaternion RotateCharacter(Vector3 rotation)
     {
-        
         Quaternion characterRot = Quaternion.LookRotation(Vector3.ProjectOnPlane(rotation - transform.position, transform.up));
-
         transform.rotation = Quaternion.Slerp(transform.rotation, characterRot, rotationSpeed * Time.deltaTime);
 
+        Vector3 line1End = transform.position + Quaternion.Euler(0, -coneWidth, 0) * (Vector3.forward * coneLength);
+        Vector3 line2End = transform.position + Quaternion.Euler(0, coneWidth, 0) * (Vector3.forward * coneLength);
+
+        Debug.DrawLine(transform.position, line1End, Color.green);
+        Debug.DrawLine(transform.position, line2End, Color.green);
+
+        Vector3 triangleNormal = Vector3.Cross(line2End - transform.position, line1End - transform.position).normalized;
+        Vector3 projectedVector = Vector3.ProjectOnPlane(rotation, triangleNormal);
+        float dotProduct = Vector3.Dot(projectedVector - line2End, projectedVector - line1End);
+        Debug.DrawLine(transform.position, projectedVector, Color.blue);
+        Debug.DrawLine(rotation, projectedVector, Color.yellow);
+        Debug.DrawLine(transform.position, triangleNormal, Color.yellow);
+
+        if (dotProduct < 0)
+        {
+            Debug.Log("The cursor exits on the left side");
+        }
+        else
+        {
+            Debug.Log("The cursor exits on the right side");
+        }
+
+        //if (isRunning)
+        //{
+        //    transform.rotation = Quaternion.Slerp(transform.rotation, characterRot, rotationSpeed * Time.deltaTime);
+        //    upperBodyTrans.rotation = Quaternion.Slerp(transform.rotation, characterRot, rotationSpeed * Time.deltaTime);
+        //}
+        //else
+        //{
+        //    upperBodyTrans.rotation = Quaternion.Slerp(transform.rotation, characterRot, rotationSpeed * Time.deltaTime);
+        //}
         return characterRot;
     }
 
