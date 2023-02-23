@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17343698, g: 0.20829058, b: 0.25046015, a: 1}
+  m_IndirectSpecularColor: {r: 0.17343718, g: 0.20829095, b: 0.2504606, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -394,6 +394,12 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!4 &430322443 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4280668054486673631, guid: a33750f7fa16f1d45a8b705ba0429311,
+    type: 3}
+  m_PrefabInstance: {fileID: 1805985441428806421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &439101807
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,6 +628,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.000000059604645, z: -0.0000009536743}
+--- !u!4 &566929638 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5965806611277164371, guid: a33750f7fa16f1d45a8b705ba0429311,
+    type: 3}
+  m_PrefabInstance: {fileID: 1805985441428806421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &714009095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,6 +1194,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1572125573095101820, guid: a33750f7fa16f1d45a8b705ba0429311,
         type: 3}
+      propertyPath: coneAngle
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572125573095101820, guid: a33750f7fa16f1d45a8b705ba0429311,
+        type: 3}
       propertyPath: coneWidth
       value: 15
       objectReference: {fileID: 0}
@@ -1197,9 +1214,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1572125573095101820, guid: a33750f7fa16f1d45a8b705ba0429311,
         type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 430322443}
+    - target: {fileID: 1572125573095101820, guid: a33750f7fa16f1d45a8b705ba0429311,
+        type: 3}
       propertyPath: cameraObject
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 1572125573095101820, guid: a33750f7fa16f1d45a8b705ba0429311,
+        type: 3}
+      propertyPath: maxTurnDegree
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572125573095101820, guid: a33750f7fa16f1d45a8b705ba0429311,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572125573095101820, guid: a33750f7fa16f1d45a8b705ba0429311,
+        type: 3}
+      propertyPath: lowerBodyTrans
+      value: 
+      objectReference: {fileID: 566929638}
     - target: {fileID: 1572125573095101820, guid: a33750f7fa16f1d45a8b705ba0429311,
         type: 3}
       propertyPath: upperBodyTrans
@@ -1209,6 +1246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572125573095101822, guid: a33750f7fa16f1d45a8b705ba0429311,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2205250122962718663, guid: a33750f7fa16f1d45a8b705ba0429311,
         type: 3}
