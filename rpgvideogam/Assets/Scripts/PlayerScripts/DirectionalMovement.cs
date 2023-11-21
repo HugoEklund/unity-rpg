@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class DirectionalMovement : MonoBehaviour
 {
@@ -122,11 +124,14 @@ public class DirectionalMovement : MonoBehaviour
 
     private Quaternion ClampedRotation(Quaternion rotFrom, Quaternion rotTo, float degrees)
     {
+        //LateUpdate lateUpdate = new();
+
+        #region Dump
         //float angle = Quaternion.Angle(rotFrom, rotTo);
         //float angleDiff = Mathf.Max(angle - degrees, 0);
         //float dot = Vector3.Dot(rotFrom * Vector3.forward, Quaternion.AngleAxis(90, Vector3.up) * rotTo * Vector3.forward);
-
         //return Quaternion.AngleAxis(angleDiff * dot, Vector3.up) * rotFrom;
+        #endregion
 
         float toY = rotTo.eulerAngles.y;
         return Quaternion.Euler(rotFrom.eulerAngles.x, Mathf.Clamp(rotFrom.eulerAngles.y, toY - degrees / 2, toY + degrees / 2), rotFrom.eulerAngles.z);
